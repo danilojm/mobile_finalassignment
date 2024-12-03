@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ActivityWeek6</string>
+    <string name="default_web_client_id">890718804004-rhba274i4kqc97oev52c3nu5fgp93e1k.apps.googleusercontent.com</string>
+    <string name="facebook_app_id">2982616658583346</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">9bf347b139757b16f0ea6f2874ede652</string>
+</resources>
