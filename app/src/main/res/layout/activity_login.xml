@@ -5,22 +5,24 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background3"
+    android:background="@drawable/backgroundcars4"
     tools:context=".Login">
+
     <TextView
         android:id="@+id/txtTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/googlefont"
-        android:text="Login 2"
-        android:textColor="@color/white"
+        android:layout_marginTop="140dp"
+        android:fontFamily="@font/googlefont2"
+        android:text="Login"
+        android:textColor="@color/black"
         android:textFontWeight="900"
         android:textSize="65sp"
-        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.797"
+        app:layout_constraintHorizontal_bias="0.23"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/txtEmail"
         style="@style/textField"
@@ -36,7 +38,8 @@
         app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSubTitle"
-        app:layout_constraintVertical_bias="0.072" />
+        app:layout_constraintVertical_bias="0.048" />
+
     <TextView
         android:id="@+id/tvSubTitle"
         android:layout_width="wrap_content"
@@ -45,11 +48,14 @@
         android:lineSpacingExtra="20sp"
         android:text="It's good to see you again!"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@color/yellow"
+        android:textColor="@color/darkred"
         android:textFontWeight="100"
         android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="@+id/txtTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.387"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+
     <EditText
         android:id="@+id/txtPassword"
         style="@style/textField"
@@ -63,6 +69,7 @@
         app:backgroundTint="#C2FFFFFF"
         app:layout_constraintStart_toStartOf="@+id/txtEmail"
         app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
+
     <Button
         android:id="@+id/btnBackToMain"
         style="@style/buttonBack"
@@ -72,7 +79,7 @@
         android:pointerIcon="none"
         android:text="back"
         android:textAllCaps="false"
-        app:backgroundTint="#430641"
+        app:backgroundTint="@color/darkred"
         app:icon="@drawable/ic_back"
         app:iconGravity="textStart"
         app:iconPadding="0dp"
@@ -81,18 +88,21 @@
         app:iconTintMode="multiply"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintHorizontal_bias="0.176"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPassword"
-        app:layout_constraintVertical_bias="0.887" />
+        app:layout_constraintVertical_bias="0.334" />
+
     <Button
         android:id="@+id/btnLogin"
         style="@style/buttonLogin"
+        android:fontFamily="@font/googlefont2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
+        android:textSize="25sp"
         android:textAllCaps="false"
-        app:backgroundTint="@color/yellow"
+        app:backgroundTint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/txtPassword"
         app:layout_constraintTop_toBottomOf="@+id/txtPassword"

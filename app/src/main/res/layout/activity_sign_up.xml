@@ -5,22 +5,24 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background3"
+    android:background="@drawable/backgroundcars4"
     tools:context=".SignUp">
+
     <TextView
         android:id="@+id/txtTitle"
-        android:fontFamily="@font/googlefont"
-        android:text="Sign Up 2"
-        android:textColor="@color/white"
-        android:textFontWeight="900"
-        android:textSize="65sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="120dp"
+        android:fontFamily="@font/googlefont2"
+        android:text="Sign Up"
+        android:textColor="@color/black"
+        android:textFontWeight="900"
+        android:textSize="65sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.797"
+        app:layout_constraintHorizontal_bias="0.288"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/tvSubTitle"
         android:layout_width="wrap_content"
@@ -29,11 +31,14 @@
         android:lineSpacingExtra="20sp"
         android:text="Hello! Let's join with us"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@color/yellow"
+        android:textColor="@color/darkred"
         android:textFontWeight="100"
         android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="@+id/txtTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.304"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+
     <EditText
         android:id="@+id/txtEmail"
         style="@style/textField"
@@ -49,7 +54,8 @@
         app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSubTitle"
-        app:layout_constraintVertical_bias="0.072" />
+        app:layout_constraintVertical_bias="0.033" />
+
     <EditText
         android:id="@+id/txtConfirmPassword"
         style="@style/textField"
@@ -63,32 +69,38 @@
         app:backgroundTint="#C2FFFFFF"
         app:layout_constraintStart_toStartOf="@+id/btnCreateAccount2"
         app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
+
     <EditText
         android:id="@+id/txtPassword"
         style="@style/textField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:drawableLeft="@drawable/ic_password"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
         app:backgroundTint="#C2FFFFFF"
-        android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="@+id/txtConfirmPassword"
         app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
+
     <Button
         android:id="@+id/btnCreateAccount2"
         style="@style/buttonLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/googlefont2"
         android:text="Create Account"
         android:textAllCaps="false"
-        app:backgroundTint="@color/yellow"
+        android:textSize="25sp"
+        app:backgroundTint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtConfirmPassword"
-        app:layout_constraintVertical_bias="0.033" />
+        app:layout_constraintVertical_bias="0.045" />
+
     <Button
         android:id="@+id/btnBackToMain"
         style="@style/buttonBack"
@@ -98,7 +110,7 @@
         android:pointerIcon="none"
         android:text="back"
         android:textAllCaps="false"
-        app:backgroundTint="#430641"
+        app:backgroundTint="@color/darkred"
         app:icon="@drawable/ic_back"
         app:iconGravity="textStart"
         app:iconPadding="0dp"
@@ -107,8 +119,8 @@
         app:iconTintMode="multiply"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintHorizontal_bias="0.173"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtConfirmPassword"
-        app:layout_constraintVertical_bias="0.887" />
+        app:layout_constraintVertical_bias="0.3" />
 </androidx.constraintlayout.widget.ConstraintLayout>

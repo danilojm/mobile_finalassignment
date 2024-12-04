@@ -1,11 +1,9 @@
 package com.example.activityweek6
 
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.content.pm.PackageManager.NameNotFoundException
 import android.os.Bundle
-import android.util.Base64
 import android.util.Log
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -16,10 +14,10 @@ import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
 import com.facebook.FacebookSdk
-import com.facebook.GraphRequest
-import com.facebook.GraphResponse
 import com.facebook.appevents.AppEventsLogger
+import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
+import com.facebook.login.widget.LoginButton
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -27,9 +25,6 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import org.json.JSONObject
-import java.security.MessageDigest
-import java.security.NoSuchAlgorithmException
 
 
 private lateinit var googleSignInClient: GoogleSignInClient
@@ -139,36 +134,40 @@ class MainActivity : AppCompatActivity() {
         callbackManager = CallbackManager.Factory.create()
 
         // Facebook Login Button
-        binding.btnFacebook.setReadPermissions("public_profile")
-        binding.btnFacebook.setPermissions("public_profile")
-        binding.btnFacebook.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
+        // Custom button for Facebook login
+        val customFacebookButton = findViewById<Button>(R.id.btnFacebook)
+
+        customFacebookButton.setOnClickListener {
+            // Start Facebook login process
+            LoginManager.getInstance().logInWithReadPermissions(
+                this,
+                listOf("public_profile")
+            )
+        }
+        // Register callback for login result
+        LoginManager.getInstance().registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
             override fun onSuccess(result: LoginResult) {
                 // Log when login is successful
                 Log.d("FacebookLogin", "Login successful: ${result.accessToken.userId}")
 
                 val accessToken = result.accessToken
-                if (accessToken != null) {
-                    // Log the access token for debugging purposes
-                    Log.d("FacebookLogin", "Access Token: ${accessToken.token}")
+                // Log the access token for debugging purposes
+                Log.d("FacebookLogin", "Access Token: ${accessToken.token}")
 
-                    // Firebase Facebook Authentication
-                    val credential = FacebookAuthProvider.getCredential(accessToken.token)
-                    auth.signInWithCredential(credential)
-                        .addOnCompleteListener(this@MainActivity) { task ->
-                            if (task.isSuccessful) {
-                                val user = auth.currentUser
-                                // Log the user's name upon successful authentication
-                                Log.d("FacebookLogin", "Welcome ${user?.displayName}")
-                                navigateToNextScreen()
-                            } else {
-                                // Log the error if authentication fails
-                                Log.e("FacebookLogin", "Authentication failed", task.exception)
-                            }
+                // Firebase Facebook Authentication
+                val credential = FacebookAuthProvider.getCredential(accessToken.token)
+                auth.signInWithCredential(credential)
+                    .addOnCompleteListener(this@MainActivity) { task ->
+                        if (task.isSuccessful) {
+                            val user = auth.currentUser
+                            // Log the user's name upon successful authentication
+                            Log.d("FacebookLogin", "Welcome ${user?.displayName}")
+                            navigateToNextScreen()
+                        } else {
+                            // Log the error if authentication fails
+                            Log.e("FacebookLogin", "Authentication failed", task.exception)
                         }
-                } else {
-                    // Log if the access token is null
-                    Log.e("FacebookLogin", "Access token is null")
-                }
+                    }
             }
 
             override fun onCancel() {
@@ -182,18 +181,6 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        val request = GraphRequest.newMeRequest(
-            accessToken,
-            object : GraphRequest.GraphJSONObjectCallback {
-                override fun onCompleted(`object`: JSONObject?, response: GraphResponse?) {
-                    // Insert your code here
-                }
-            })
-
-        val parameters = Bundle()
-        parameters.putString("fields", "id,name")
-        request.parameters = parameters
-        request.executeAsync()
 
         //We will add a listener to the button:
         // We will add a listener to the button that has id: btnGoogleSignIn
@@ -223,6 +210,8 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
+        callbackManager.onActivityResult(requestCode, resultCode, data)
+
         if (requestCode == google_sign_in_code) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
@@ -249,8 +238,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-
 
 
     private fun navigateToNextScreen() {

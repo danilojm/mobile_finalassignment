@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#EDB100</color>
     <color name="yellow2">#C89101</color>
+    <color name="darkred">#720000</color>
 </resources>
