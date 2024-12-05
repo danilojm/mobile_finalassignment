@@ -73,8 +73,8 @@ The app’s navigation flow is designed to maintain a logical progression:
 ### Run the Application
 1. Clone the project repository to your local development environment:
    ```bash
-   git clone <repository-url>
-   cd <repository-folder>
+   git clone https://github.com/danilojm/mobile_finalassignment.git
+   cd mobile_finalassignment
    ```
 2. Launch the app on your emulator or device to explore its features.
 
